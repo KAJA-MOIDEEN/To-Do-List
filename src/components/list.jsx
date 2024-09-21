@@ -1,20 +1,26 @@
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { ToDoContext } from "../context/ToDoContext";
 
 function List({ text,isComplete,id }) {
 const valueContext = useContext(ToDoContext);
 
-  const handleUpdate = (id)=>{
-    valueContext.setToDoList((prev)=> prev.map((task)=>(task.id === id ? {...task, isComplete: !task.isComplete } : task ))
+const handleUpdate = useCallback(
+  (id) => {
+    valueContext.setToDoList((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, isComplete: !task.isComplete } : task
+      )
     );
-  };
+  },
+  [valueContext] // Depend on `valueContext` since `setToDoList` comes from it
+);
 
-  const taksDelete = (id)=>{
+
+  const taksDelete = useCallback((id) =>{
     valueContext.setToDoList((prev)=> prev.filter((task)=> task.id !== id )
     )
-  }
+  },[valueContext])
 
-  console.log(isComplete)
 
   return (
     <>

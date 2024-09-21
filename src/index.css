@@ -8,3 +8,38 @@
   margin: 0;
   padding: 0;
 }
+
+.gaming-loader {
+  width: 60px;
+  height: 60px;
+  border: 8px solid #222;
+  border-top: 8px solid #e91e63; /* Highlight color */
+  border-radius: 50%;
+  animation: pulse 1s ease infinite, spin 1.5s linear infinite;
+  position: relative;
+  box-shadow: 0 0 20px #e91e63, 0 0 50px #e91e63;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px #e91e63, 0 0 30px #e91e63, 0 0 60px #e91e63;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px #e91e63, 0 0 50px #e91e63, 0 0 100px #e91e63;
+    transform: scale(1.2);
+  }
+  100% {
+    box-shadow: 0 0 10px #e91e63, 0 0 30px #e91e63, 0 0 60px #e91e63;
+    transform: scale(1);
+  }
+}

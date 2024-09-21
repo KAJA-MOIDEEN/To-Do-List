@@ -4,9 +4,10 @@ export const ToDoContext = createContext();
 
 const ToDoprovider = ({children})=> {
     const [toDoList,setToDoList] = useState([]);
+    const [loading, setLoading] = useState(true); 
     
     return (
-    <ToDoContext.Provider value={{toDoList,setToDoList}}>
+    <ToDoContext.Provider value={{toDoList,setToDoList,loading, setLoading}}>
         {children}
     </ToDoContext.Provider>
   )
